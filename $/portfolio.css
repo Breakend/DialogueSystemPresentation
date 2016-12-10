@@ -14,6 +14,11 @@ body {
 
 }
 
+.logo-image {
+  border: 0px solid transparent !important;
+  width: 25%;
+}
+
 .reveal h2{
   color: #A61919;
 }
