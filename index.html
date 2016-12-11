@@ -22,13 +22,13 @@
     </div> -->
     <div class="header__menu">
       <div class="header__menu-item"><a class="header__menu-link" href="#/">Introduction</a></div><!--
-   --><div class="header__menu-item"><a class="header__menu-link" href="#/motivation">Motivation</a></div><!--
+      --><div class="header__menu-item"><a class="header__menu-link" href="#/motivation">Motivation</a></div><!--
  --><div class="header__menu-item"><a class="header__menu-link" href="#/related">Related Work</a></div><!--
+--><div class="header__menu-item"><a class="header__menu-link" href="#/contributions">Contributions</a></div><!--
 --><div class="header__menu-item"><a class="header__menu-link" href="#/model">Model</a></div><!--
    --><div class="header__menu-item"><a class="header__menu-link" href="#/experiments">Experiments</a></div><!--
  --><div class="header__menu-item"><a class="header__menu-link" href="#/results">Results</a></div><!--
 --><div class="header__menu-item"><a class="header__menu-link" href="#/analysis">Analysis</a></div><!--
---><div class="header__menu-item"><a class="header__menu-link" href="#/discussion">Discussion</a></div><!--
 --><div class="header__menu-item"><a class="header__menu-link" href="#/conclusion">Conclusion</a></div><!--
    --><div class="header__menu-item"><a class="header__menu-link" href="#/questions">Questions?</a></div><!--
    --><div class="header__menu-item header__menu-item_type_contact"><a class="header__menu-link" href="#/contact">Contact</a></div>
@@ -71,26 +71,29 @@
         <section>
           <div class="text">
             <h2>Different approaches for creating conversational systems</h2>
-            <div class="section-subheader">Goal Oriented (for specific tasks Facebook, Amazon, Apple, etc.)[1]</div>
-            <div class="section-subheader">Scripted (AI in video games)</div>
-            <div class="section-subheader"><b>Statistical (learn from human dialogue corpora)[2]</b></div>
-            [1] https://arxiv.org/pdf/1605.07683v2.pdf
-            [2] https://arxiv.org/abs/1506.05869
+            <ul>
+            <li class="section-subheader">Goal Oriented (for specific tasks <a href="https://arxiv.org/pdf/1605.07683v2.pdf">Facebook</a>, Amazon, Apple, etc.)</li>
+            <li class="section-subheader">Pattern Matching (AI in video games)</li>
+            <li class="section-subheader"><b><a href="https://arxiv.org/abs/1506.05869">Purely statistical conversational systems</a> (learn from human dialogue corpora)</b></li>
+            </ul>
           </div>
         </section>
         <section>
           <div class="text">
             <h2>Massive amounts of noisy dialogue data</h2>
-            <div class="section-subheader"><b>Cornell Movie Dialogue Corpus</b></div>
+            <div class="section-subheader"><b><a href="https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html">Cornell Movie Dialogue Corpus</a></b></div>
             <div class="section-subheader">OpenSubtitles Dataset</div>
-            <div class="section-subheader">Ubuntu Dialogue Corpus</div>
-            <div class="section-subheader">Twitter Corpora</div>
+            <div class="section-subheader"><a href="https://arxiv.org/abs/1506.08909">Ubuntu Dialogue Corpus</a></div>
+            <div class="section-subheader"><a href="https://arxiv.org/abs/1512.05742">Survey</a> of others available...</div>
           </div>
         </section>
         <section>
           <div class="text">
             <h2>Idea</h2>
-            <div class="section-subheader">Make unsupervised systems learn statistically relevant responses based on context. Existing models use LSTMs, but we wan't to build on convolutional models which have shown better performance in Audio generation tasks than recurrent models. TODO cite</div>
+            <ul>
+            <li class="section-subheader">Make unsupervised systems learn statistically relevant responses based on context.</li>
+            <li class="section-subheader">Existing models use LSTMs for <b>Seq2Seq</b> but we want to build on <b>causal convolutional architectures</b> which <a href="https://arxiv.org/pdf/1609.03499.pdf">have shown better performance in <i>audio generation</i> tasks than recurrent models.</a></li>
+          </ul>
           </div>
         </section>
         <!-- <section data-background-image="$/images_pf/The_Human_Connectome.png" data-background-size="700px" id="complex-brains">
@@ -112,25 +115,39 @@
       <section>
         <section id="related">
           <div class="text">
-            <h2>Vinyal's et al.: A Neural Conversational Model</h2>
-            <div class="section-subheader"><img src="https://ai2-s2-public.s3.amazonaws.com/figures/2016-11-01/268a7cd1bf65351bba4eb97aac373d624af2c08f/0-Table1-1.png"/></div>
+            <h2>A Neural Conversational Model<br/>(Vinyals and Le, 2015)</h2>
+            <div class="section-subheader"><img style="width:50%;" src="https://ai2-s2-public.s3.amazonaws.com/figures/2016-11-01/268a7cd1bf65351bba4eb97aac373d624af2c08f/0-Table1-1.png"/></div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>Papers and main contributions</h2>
-            <div class="section-subheader">List of papers extending seq2seq and their main contributions</div>
+            <h2 style="font-size: 50px;">Recurrent Models and Improvements<br/>In Machine Translation and Dialogue Systems</h2>
+            <div class="section-subheader">
+              <ul>
+                <li style="font-size: 20px;"><a href="http://stanford.edu/%7Elmthang/data/papers/emnlp15_attn.pdf">Effective Approaches to Attention-based Neural Machine Translation</a>. Luong et al., EMNLP 2015.</li>
+                <li style="font-size: 20px;"><a href="https://arxiv.org/pdf/1606.04199">Deep Recurrent Models with Fast Forward Connections for Neural Machine Translation</a>.
+                Zhou et al, TACL 2016.</li>
+                <li style="font-size: 20px;"><a href="https://arxiv.org/pdf/1605.06069.pdf">A Hierarchical Latent Variable Encoder-Decoder Model for Generating Dialogues</a>.
+                Serban et al, AAAI 2017.</li>
+                <li style="font-size: 20px;"><a href="https://arxiv.org/pdf/1611.06216v1.pdf">Generative Deep Neural Networks for Dialogue: A Short Review</a>.
+                Serban et al., arxiv 2016.
+                TODO: add more papers
+                </li>
+              </ul>
+          </div>
           </div>
         </section>
         <section>
           <div class="text">
             <h2>WaveNet</h2>
+            <img src="https://storage.googleapis.com/deepmind-live-cms/documents/BlogPost-Fig2-Anim-160908-r01.gif" alt="Architecture animation">
             <div class="section-subheader">State of the art audio generation using causal convolutions.</div>
           </div>
         </section>
         <section>
           <div class="text">
             <h2>ByteNet</h2>
+            <div class="section-subheader"><img src="$/images_pf/bytenet.png"/></div>
             <div class="section-subheader">Fully convolutional encoder-decoder for machine translation</div>
           </div>
         </section>
@@ -139,7 +156,7 @@
       <section>
         <section id="contributions">
           <div class="text">
-            <h2>ByteNet-inspired architecture for Dialogue System</h2>
+            <h2>Fully Convolutional <br/>Character-Level Conversational System</h2>
             <div class="section-subheader">Fully convolutional dialogue system based on causal convolutions not applied previously to authors knowledge.</div>
           </div>
         </section>
@@ -149,8 +166,65 @@
         <section id="model">
           <div class="text">
             <h2>Model and Theory</h2>
-            <div class="section-subheader"></div>
+            <div class="section-subheader">Use ByteNet architecture, and modify with extra conditional gate to make context more prevalent.</div>
           </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Convolutional Neural Networks</h2>
+            TODO
+            <!-- <div class="section-subheader"><img src="$/images_pf/bytenet.png"/></div> -->
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>ByteNet Architecture</h2>
+            <div class="section-subheader"><img src="$/images_pf/bytenet.png"/></div>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Modified ByteNet Architecture</h2>
+            <div class="section-subheader"><img src="$/images_pf/modified_bytenet.png"/></div>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Modified ByteNet Architecture</h2>
+            <div class="section-subheader">TODO: conditional gate taken from WaveNet</div>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Objective Function</h2>
+            <div class="section-subheader">Softmax Categorical Cross Entropy (TODO equations). L2 Regularization. MaxProp.</div>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Beam Search</h2>
+            <div class="section-subheader">TODO: info on beam search</div>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Word-Level Seq2Seq Baseline With Attention</h2>
+            <div class="section-subheader"><img src="https://www.tensorflow.org/versions/r0.12/images/basic_seq2seq.png"/>
+              Used <a href="https://github.com/harvardnlp/seq2seq-attn">Harvard Torch Implementation</a> default parameters (500 hidden units, 2 layers).
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Used repositories and technologies</h2>
+            <ul>
+            <li class="section-subheader">Harvard Seq2Seq with Attention/BeamSearch (Torch/Lua)</li>
+            <li class="section-subheader">Tensorflow/Sugartensor</li>
+            <li class="section-subheader">Used <a href="https://github.com/buriburisuri/ByteNet">Jamonglabs implementation of Bytenet</a> as base. Heavily modified.</li>
+            <li class="section-subheader">Wrapper for processing Cornell corpus heavily modified from <a href="https://github.com/pralexa/SimpleBot/blob/master/cornell_movie_dialog.py">this Github Repo</a>.
+          </li>
+          <li class="section-subheader">Perl implementation of BLEU score borrowed from <a href="https://github.com/moses-smt/mosesdecoder/blob/master/scripts/generic/multi-bleu.perl">Moses Translation Project</a></li>
+        </ul>
         </section>
       </section>
 
@@ -160,44 +234,59 @@
           <div class="text">
             <h2>Dataset</h2>
             <div class="section-subheader">Cornell Movie Dialogue Corpus</div>
+            <div style="font-size: 18px;" class="section-subheader">Smaller, reasonable training time.</div>
+            <div style="font-size: 18px;" class="section-subheader">Conversations in variety of contexts.</div>
           </div>
         </section>
         <section>
           <div class="text">
             <h2>Pruning</h2>
-            <div class="section-subheader">To reduce size of the model only take sentences with l.t. 50 characters</div>
+            <div class="section-subheader">To reduce size of the model only take sentences with l.t. 50 characters. Otherwise takes too long to converge.</div>
           </div>
         </section>
         <section>
           <div class="text">
             <h2>Split</h2>
-            <div class="section-subheader">80% training/10% validation/10% testing</div>
+            <div class="section-subheader">80% training(~80k dialogue pairs)/10% validation (~8k dialogue pairs)/10% testing(~8k dialogue pairs)</div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>Evaluation Metric</h2>
-            <div class="section-subheader">BLEU score</div>
+            <h2>Evaluation Metrics</h2>
+            <div class="section-subheader">BLEU score as in TODO and TODO.</div>
+            <div class="section-subheader">Questionaire as in several other works.</div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>Experiment 1: Raw ByteNet Architecture</h2>
+            <h2>Questionaire</h2>
+            <ul>
+            <li class="section-subheader">Rate 3 responses (baseline, ours, and human response)</li>
+            <li class="section-subheader">3 different criteria: (1) which is the most believable response; (2) which response is the most grammatically correct; (3) which response provides the most believable information</li>
+            <li class="section-subheader">Rate on scale: Excellent(5), Good(4), Acceptable(3), Mediocre(2), and Bad(1)</li>
+            <li class="section-subheader">Questions and statements taken mostly from: TODO Vinyals.</li>
+            <li class="section-subheader">Idea from questionaire taken from <a href="https://openreview.net/pdf?id=HJDdiT9gl">Shao et al., 2016</a>.</li>
+          </ul>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Experiment 1: Raw ByteNet Architecture w/ Beam Search</h2>
             <div class="section-subheader">Almost exclusively "I don't know"</div>
             <div class="section-subheader">Some larger models didn't converge at all.</div>
-            <div class="section-subheader">Best Bleu Score on Validation Set: TODO</div>
+            <div class="section-subheader">Best Bleu Score on Validation Set: 1.03</div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>Experiment 2: Modified ByteNet Architecture w/ BeamSearch</h2>
-            <div class="section-subheader">Remove "I don't know" problem</div>
+            <h2>Experiment 2: Modified ByteNet Architecture w/ Beam Search</h2>
+            <div class="section-subheader">Removes "I don't know" problem, more variable responses.</div>
             <div class="section-subheader">Bleu Score on Validation Set: TODO</div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>Baseline: Word-Level Seq2Seq with Attention</h2>
+            <h2>Baseline: Word-Level Seq2Seq with Attention and Beam Search</h2>
             <div class="section-subheader">Bleu Score on Validation Set: TODO</div>
           </div>
         </section>
@@ -207,29 +296,94 @@
       <section>
         <section id="results">
           <div class="text">
-            <h2>Results</h2>
-            <div class="section-subheader">TODO: table comparing baseline with attention</div>
+            <h2>Results (BLEU Score)</h2>
+            <ul>
+              <li class="section-subheader">Word Level Seq2Seq with Attention: 1.30 </li>
+              <li class="section-subheader">Original Character-level ByteNet: 1.13</li>
+              <li class="section-subheader">Modified Character-level ByteNet: TODO</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Results (Questionaire Scores)</h2>
+            <ul>
+            <li class="section-subheader">Most believable response (average rating)</li>
+            <li class="section-subheader">Baseline Seq2Seq: </li>
+            <li class="section-subheader">Modified Character-level ByteNet: </li>
+            <li class="section-subheader">Human: </li>
+          </ul>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Results (Questionaire Scores)</h2>
+            <ul>
+            <li class="section-subheader">Most believable response (average rating)</li>
+            <li class="section-subheader">Baseline Seq2Seq: </li>
+            <li class="section-subheader">Modified Character-level ByteNet: </li>
+            <li class="section-subheader">Human Average rank: </li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Results (Questionaire Scores)</h2>
+            <ul>
+            <li class="section-subheader">Most informative response (average rating)</li>
+            <li class="section-subheader">Baseline Seq2Seq: </li>
+            <li class="section-subheader">Modified Character-level ByteNet: </li>
+            <li class="section-subheader">Human Average rank: </li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Results (Sample Responses)</h2>
+            <div class="section-subheader">TODO</div>
           </div>
         </section>
       </section>
-
 
       <section>
         <section id="analysis">
           <div class="text">
-            <h2>Analysis</h2>
-            <div class="section-subheader">Interpretation of table before</div>
-            <!--  TODO: effects of L2 reg (note, examples where uses (made up) names without L2 reg)-->
-            <!--  Blue score differences?-->
+            <h2>Analysis and Discussion</h2>
+            <div class="section-subheader">The <b>"I don't know"</b> problem</div>
           </div>
         </section>
-      </section>
-
-      <section>
-        <section id="discussion">
+        <section>
           <div class="text">
-            <h2>Discussion</h2>
-            <div class="section-subheader">Talk about "I don't know" problem, effectiveness of beam search, etc.</div>
+            <h2>Analysis and Discussion</h2>
+            <div class="section-subheader">Low BLEU scores.</div>
+            <div class="section-subheader">Likely due to inneffectiveness of BLEU as a metric for dialogue systems.</div>
+            <div class="section-subheader">Small and noisy dataset.</div>
+          </div>
+        </section>
+        <section >
+          <div class="text">
+            <h2>Analysis and Discussion</h2>
+            <div class="section-subheader">Examples of Noise in dataset.</div>
+            <div class="section-subheader">TODO</div>
+          </div>
+        </section>
+        <section >
+          <div class="text">
+            <h2>Analysis and Discussion</h2>
+            <div class="section-subheader">Effectiveness of Evaluation Metrics</div>
+            <div class="section-subheader">TODO: alternatives</div>
+            <div class="section-subheader">TODO: spellcheck</div>
+          </div>
+        </section>
+        <section >
+          <div class="text">
+            <h2>Analysis and Discussion</h2>
+            <div class="section-subheader"><b>Prohibitive Training Time</b></div>
+            <ul>
+            <li class="section-subheader">Extremely long (~2 days for model to converge on ~80k sentence pairs)</li>
+            <li class="section-subheader">Others have reported taking a month to converge on OpenSubtitles corpus with large Seq2Seq model (TODO cite)</li>
+            <li class="section-subheader">Possible optimizations can be made such as caching convolutions as in <a href="https://arxiv.org/abs/1611.09482">Fast Wavenet</a>. </li>
+            </ul>
           </div>
         </section>
       </section>
@@ -238,16 +392,25 @@
         <section id="conclusion">
           <div class="text">
             <h2>Conclusion</h2>
-            <div class="section-subheader">Character level models show promise since you don't have to explicitely model word space. New words automatically learned in the corpus.</div>
+            <div class="section-subheader">Character level models show promise since you don't have to explicitly model word space. New words automatically learned in the corpus.</div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>Future Work</h2>
-            <div class="section-subheader">Train on larger corpus with larger/deeper model. Cite paper that says it takes a month to train.</div>
-            <div class="section-subheader">Run larger system against questionairre as in TODO: cite paper</div>
-            <div class="section-subheader">Add more contextual dialogue (add previous contexts as more conditional gates)</div>
-            <div class="section-subheader">Add speaker information as a condition.</div>
+            <h2>Conclusion</h2>
+            <div class="section-subheader">Modified character-level ByteNet architecture competitive with basic word-level Seq2Seq.</div>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Future Work (beyond project)</h2>
+            <ul>
+            <li class="section-subheader">Train on larger OpenSubtitles corpus with bigger/deeper model (prohibitive with current hardware/timeframe).</li>
+            <li class="section-subheader">Run larger system against more information oriented questionairre.</li>
+            <li class="section-subheader">Pretrain with Wikipedia Corpus for added knowledge base (TODO: cite paper Topic Aware or Context aware modeling).</li>
+            <li class="section-subheader">Add longer term contexts as extra conditional gates.</li>
+            <li class="section-subheader">Add speaker information as a condition, work toward interactive alignment.</li>
+            </ul>
           </div>
         </section>
       </section>
@@ -267,7 +430,7 @@
         <h2>Contact</h2>
         <div class="section-subheader">
           Any later questions, you can ask them by email!
-          <br/><span style="font-size: 10pt;">(Or don't.)</span>
+          <br/><span style="font-size: 10pt;">(All citations and sources are linked inline.)</span>
           <br><a class="contact-link contact-link_type_email" href="mailto:peter.henderson@mail.mcgill.ca">peter.henderson@mail.mcgill.ca</a>
         </div>
       </section>
