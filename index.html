@@ -96,20 +96,6 @@
           </ul>
           </div>
         </section>
-        <!-- <section data-background-image="$/images_pf/The_Human_Connectome.png" data-background-size="700px" id="complex-brains">
-          <h2 style="margin-top: 615px;">Human brains are hard.</h2>
-          <span style="float:left; margin-top: -20px; font-size:10px;">Image courtesy of <a href="https://upload.wikimedia.org/wikipedia/commons/c/cd/The_Human_Connectome.png">Wikipedia</a></span>
-        </section>
-        <section data-background-image="$/images_pf/drosophila.png" data-background-size="400px" id="simple-brain">
-          <h2 style="margin-top: 475px;">Insect brains are small.</h2>
-          <div class="section-subheader">We need to understand the building blocks and scale up.</div>
-          <span style="float:left; margin-top: 25px; font-size:10px;">Image courtesy of <a href="http://www.cell.com/action/showImagesData?pii=S0960-9822%2810%2901522-8">Chiang et al.</a></span>
-        </section> -->
-        <!-- <section>
-<iframe style= "margin-top:20px;" width="100%" height="450" src="https://www.youtube.com/embed/zlv9qi43UmY?autoplay=1&controls=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
-<h2>Why community detection?</h2>
-<div class="section-subheader">Intracommunity nodes probably work together to accomplish a task.</div>
-        </section> -->
       </section>
 
       <section>
@@ -144,14 +130,14 @@
         </section>
         <section>
           <div class="text">
-            <h2>WaveNet</h2>
+            <h2><a href="https://arxiv.org/abs/1609.03499">WaveNet</a></h2>
             <img src="https://storage.googleapis.com/deepmind-live-cms/documents/BlogPost-Fig2-Anim-160908-r01.gif" alt="Architecture animation">
             <div class="section-subheader">State of the art audio generation using causal convolutions.</div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>ByteNet</h2>
+            <h2><a href="https://arxiv.org/abs/1610.10099">ByteNet</a></h2>
             <div class="section-subheader"><img src="$/images_pf/bytenet.png"/></div>
             <div class="section-subheader">Fully convolutional encoder-decoder for machine translation</div>
           </div>
@@ -306,7 +292,7 @@
             <h2>Experiment 1: Raw ByteNet Architecture w/ Beam Search</h2>
             <div class="section-subheader">Almost exclusively "I don't know"</div>
             <div class="section-subheader">Some larger models didn't converge at all.</div>
-            <div class="section-subheader">Best Bleu Score on Validation Set: 1.03</div>
+            <div class="section-subheader">Best Bleu Score on Validation Set: 1.56</div>
           </div>
         </section>
         <section>
@@ -331,7 +317,7 @@
             <h2>Results (BLEU Score)</h2>
             <ul>
               <li class="section-subheader">Word Level Seq2Seq with Attention: 1.30 </li>
-              <li class="section-subheader">Original Character-level ByteNet: .76</li>
+              <li class="section-subheader">Original Character-level ByteNet: 1.46</li>
               <li class="section-subheader">Modified Character-level ByteNet: TODO</li>
             </ul>
           </div>
@@ -342,8 +328,9 @@
             <ul>
             <li class="section-subheader">Appropriateness of response (average rating)</li>
             <li class="section-subheader">Baseline Seq2Seq: 2.16</li>
-            <li class="section-subheader">Modified Character-level ByteNet: </li>
-            <li class="section-subheader">Human: </li>
+            <li class="section-subheader">Baseline ByteNet: 2.23</li>
+            <li class="section-subheader">Modified Character-level ByteNet: TODO</li>
+            <li class="section-subheader">Human: 4.68</li>
           </ul>
           </div>
         </section>
@@ -353,8 +340,9 @@
             <ul>
             <li class="section-subheader">Grammaticality (average rating)</li>
             <li class="section-subheader">Baseline Seq2Seq: 5</li>
+            <li class="section-subheader">Baseline ByteNet: 4.59</li>
             <li class="section-subheader">Modified Character-level ByteNet: </li>
-            <li class="section-subheader">Human Average rank: </li>
+            <li class="section-subheader">Human Average rank: 5</li>
             </ul>
           </div>
         </section>
@@ -364,8 +352,9 @@
             <ul>
             <li class="section-subheader">Information Gain/Diversity (average rating)</li>
             <li class="section-subheader">Baseline Seq2Seq: 1.45</li>
-            <li class="section-subheader">Modified Character-level ByteNet: </li>
-            <li class="section-subheader">Human Average rank: </li>
+            <li class="section-subheader">Baseline ByteNet: 1.72</li>
+            <li class="section-subheader">Modified Character-level ByteNet: TODO</li>
+            <li class="section-subheader">Human Average rank: 4.26</li>
             </ul>
           </div>
         </section>
@@ -375,9 +364,21 @@
             <ul>
             <li class="section-subheader"><b>How are you?</b> Good.</li>
             <li class="section-subheader"><b>Where are you from?</b> Home.</li>
-            <li class="section-subheader"><b>Can a cat fly?</b>How can you do that?</li>
+            <li class="section-subheader"><b>Can a cat fly?</b> How can you do that?</li>
             <li class="section-subheader"><b>How many legs does a cat have?</b> I don't know.</li>
             <li class="section-subheader"><b> What is the purpose of life?</b> I don't know.</li>
+          </ul>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Results (Baseline ByteNet)</h2>
+            <ul>
+            <li class="section-subheader"><b>How are you?</b> What do you mean?</li>
+            <li class="section-subheader"><b>Where are you from?</b> I don't know.</li>
+            <li class="section-subheader"><b>Can a cat fly?</b> Sure.</li>
+            <li class="section-subheader"><b>How many legs does a cat have?</b> I don't know.</li>
+            <li class="section-subheader"><b> What is the purpose of life?</b> The money.</li>
           </ul>
           </div>
         </section>
@@ -387,9 +388,9 @@
             <ul>
             <li class="section-subheader"><b>How are you?</b> I don't know.  I'm sorry.</li>
             <li class="section-subheader"><b>Where are you from?</b> Nowhere....</li>
-            <li class="section-subheader"><b>Can a cat fly?</b>You got it!</li>
+            <li class="section-subheader"><b>Can a cat fly?</b> You got it!</li>
             <li class="section-subheader"><b>How many legs does a cat have?</b> Five.</li>
-            <li class="section-subheader"><b> What is the purpose of life?</b>Nothing.  I'm sorry.</li>
+            <li class="section-subheader"><b> What is the purpose of life?</b> Nothing.  I'm sorry.</li>
           </ul>
           </div>
         </section>
@@ -426,15 +427,19 @@
           <div class="text">
             <h2>Analysis and Discussion</h2>
             <div class="section-subheader">Examples of Noise in dataset.</div>
-            <div class="section-subheader">TODO</div>
+            <ul>
+            <li class="section-subheader"><b>Divorced</b> No, I...</li>
+            <li class="section-subheader"><b>I must be going nuts...</b> Nancy?</li>
+            <li class="section-subheader"><b>She's got other problems, of course...</b> Her mother needs an operation...</li>
+            <li class="section-subheader"><b>A couple blocks! About six!</b> We work there!</li>
+          </ul>
           </div>
         </section>
         <section >
           <div class="text">
             <h2>Analysis and Discussion</h2>
-            <div class="section-subheader">Effectiveness of Evaluation Metrics</div>
-            <div class="section-subheader">TODO: alternatives</div>
-            <div class="section-subheader">TODO: spellcheck</div>
+            <div class="section-subheader">Alternative Evaluation Metrics</div>
+            <div class="section-subheader">BLEU score not great. Maybe <a href="https://openreview.net/pdf?id=HJ5PIaseg">ADEM better</a> (but not yet published)?</div>
           </div>
         </section>
         <section >
@@ -443,9 +448,29 @@
             <div class="section-subheader"><b>Prohibitive Training Time</b></div>
             <ul>
             <li class="section-subheader">Extremely long (~2 days for model to converge on ~80k sentence pairs)</li>
-            <li class="section-subheader">Others have reported taking a month to converge on OpenSubtitles corpus with large Seq2Seq model (TODO cite)</li>
+            <li class="section-subheader">Others have reported taking a month to converge on datsets of size equivalent to OpenSubtitles corpus with Seq2Seq model as in <a href="https://www.aclweb.org/anthology/P/P16/P16-1094.pdf">Li et al., 2016</a></li>
             <li class="section-subheader">Possible optimizations can be made such as caching convolutions as in <a href="https://arxiv.org/abs/1611.09482">Fast Wavenet</a>. </li>
             </ul>
+          </div>
+        </section>
+        <section >
+          <div class="text">
+            <h2>Modified ByteNet Strengths</h2>
+            <ul>
+            <li class="section-subheader">More diverse responses</li>
+            <li class="section-subheader">Can model character level phenomena like ellipses...</li>
+            <li class="section-subheader">Learns to model language.</li>
+          </ul>
+          </div>
+        </section>
+        <section >
+          <div class="text">
+            <h2>Modified ByteNet Weaknesses</h2>
+            <ul>
+            <li class="section-subheader">Still some noisy output</li>
+            <li class="section-subheader">Needs larger model for effective responses</li>
+            <li class="section-subheader">Data hungry model.</li>
+          </ul>
           </div>
         </section>
       </section>
@@ -469,9 +494,9 @@
             <ul>
             <li class="section-subheader">Train on larger OpenSubtitles corpus with bigger/deeper model (prohibitive with current hardware/timeframe).</li>
             <li class="section-subheader">Run larger system against more information oriented questionairre.</li>
-            <li class="section-subheader">Pretrain with Wikipedia Corpus for added knowledge base (TODO: cite paper Topic Aware or Context aware modeling).</li>
+            <li class="section-subheader">Pretrain with Wikipedia Corpus for added knowledge base as in <a href="https://arxiv.org/pdf/1606.08340.pdf">Xing et al., 2016.</a></li>
             <li class="section-subheader">Add longer term contexts as extra conditional gates.</li>
-            <li class="section-subheader">Add speaker information as a condition, work toward interactive alignment.</li>
+            <li class="section-subheader">Add speaker information as a condition, work toward <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3384290/">interactive alignment.</a></li>
             </ul>
           </div>
         </section>
