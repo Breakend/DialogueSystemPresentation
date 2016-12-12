@@ -21,6 +21,9 @@ body {
 img {
   border: 0px solid transparent !important;
 }
+.reveal img {
+  border: 0px solid transparent !important;
+}
 
 .logo-image {
   /*border: 0px solid transparent !important;*/

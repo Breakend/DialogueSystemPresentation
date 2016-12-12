@@ -82,7 +82,7 @@
           <div class="text">
             <h2>Massive amounts of noisy dialogue data</h2>
             <div class="section-subheader"><b><a href="https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html">Cornell Movie Dialogue Corpus</a></b></div>
-            <div class="section-subheader">OpenSubtitles Dataset</div>
+            <div class="section-subheader"><a href="http://opus.lingfil.uu.se/OpenSubtitles2016.php">OpenSubtitles Dataset</a></div>
             <div class="section-subheader"><a href="https://arxiv.org/abs/1506.08909">Ubuntu Dialogue Corpus</a></div>
             <div class="section-subheader"><a href="https://arxiv.org/abs/1512.05742">Survey</a> of others available...</div>
           </div>
@@ -115,8 +115,14 @@
       <section>
         <section id="related">
           <div class="text">
-            <h2>A Neural Conversational Model<br/>(Vinyals and Le, 2015)</h2>
-            <div class="section-subheader"><img style="width:50%;" src="https://ai2-s2-public.s3.amazonaws.com/figures/2016-11-01/268a7cd1bf65351bba4eb97aac373d624af2c08f/0-Table1-1.png"/></div>
+            <h2>A Neural Conversational Model</h2>
+            <div class="section-subheader"><a href="https://arxiv.org/abs/1506.05869">(Vinyals and Le, 2015)</a><br/><img style="width:50%;" src="https://ai2-s2-public.s3.amazonaws.com/figures/2016-11-01/268a7cd1bf65351bba4eb97aac373d624af2c08f/0-Table1-1.png"/></div>
+          </div>
+        </section>
+        <section id="related">
+          <div class="text">
+            <h2>A Neural Conversational Model</h2>
+            <div class="section-subheader">Uses LSTMs <a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">as described here.</a><br/><img style="width:50%;" src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png"/></div>
           </div>
         </section>
         <section>
@@ -131,7 +137,6 @@
                 Serban et al, AAAI 2017.</li>
                 <li style="font-size: 20px;"><a href="https://arxiv.org/pdf/1611.06216v1.pdf">Generative Deep Neural Networks for Dialogue: A Short Review</a>.
                 Serban et al., arxiv 2016.
-                TODO: add more papers
                 </li>
               </ul>
           </div>
@@ -171,9 +176,17 @@
         </section>
         <section>
           <div class="text">
-            <h2>Convolutional Neural Networks</h2>
-            TODO
-            <!-- <div class="section-subheader"><img src="$/images_pf/bytenet.png"/></div> -->
+            <h2>Formulation</h2>
+
+            <div class="section-subheader">Model probability of next character based on previous output and context.</div>
+            <div class="section-subheader">$p(t|s) = \prod_{i=0}^N p(t_i|t_{\lt i}, s)$</div>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Dilated and Causal Convolutions</h2>
+            <div class="section-subheader">Causal convolutions only rely on previous timesteps. Dilated convolutions add skipping for modeling longer time-series more efficiently.</div>
+            <img src="https://storage.googleapis.com/deepmind-live-cms/documents/BlogPost-Fig2-Anim-160908-r01.gif" alt="Architecture animation">
           </div>
         </section>
         <section>
@@ -191,19 +204,36 @@
         <section>
           <div class="text">
             <h2>Modified ByteNet Architecture</h2>
-            <div class="section-subheader">TODO: conditional gate taken from WaveNet</div>
+            <div class="section-subheader">$z=\tanh(W*x + V*h) \odot \sigma (W*x + V*h)$</div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>Objective Function</h2>
-            <div class="section-subheader">Softmax Categorical Cross Entropy (TODO equations). L2 Regularization. MaxProp.</div>
+            <h2>Objective Function<br/>Softmax Categorical Cross Entropy</h2>
+            <div class="section-subheader"></div>
+            <div class="section-subheader">$L(W, x) = - \ln (\frac{e^{f_k}}{\sum_j e^{f_j}})$</div>
+            <div class="section-subheader"><a href="https://cs231n.github.io/linear-classify/#softmax-classifier">From Stanford CS231 Notes</a>.</div>
+
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>MaxProp</h2>
+            <ul>
+            <li class="section-subheader">According to the authors, <b>prevents gradient explosions</b>, <b>numerically stable.</b></li>
+            <li class="section-subheader">Provided by SugarTensor wrapper for Tensorflow.</li>
+            <li class="section-subheader">See <a href="http://jamonglab.com/maxprop/">their website</a> for more details.</li>
+          </ul>
           </div>
         </section>
         <section>
           <div class="text">
             <h2>Beam Search</h2>
-            <div class="section-subheader">TODO: info on beam search</div>
+            <ul>
+              <li class="section-subheader">When $B=1$, essentially Best-First Search </li>
+              <li class="section-subheader">When $B=\infty$, essentially Breadth-First Search </li>
+              <li class="section-subheader">Beam heuristic is sum of log probability.</li>
+            </ul>
           </div>
         </section>
         <section>
@@ -253,8 +283,10 @@
         <section>
           <div class="text">
             <h2>Evaluation Metrics</h2>
-            <div class="section-subheader">BLEU score as in TODO and TODO.</div>
-            <div class="section-subheader">Questionaire as in several other works.</div>
+            <ul>
+            <li class="section-subheader">BLEU score as in <a href="https://arxiv.org/abs/1510.03055">Li et al., 2015</a> and <a href="https://arxiv.org/abs/1603.06155">Li et al., 2016.</a></li>
+            <li class="section-subheader">Questionaire as in <a href="https://openreview.net/pdf?id=HJDdiT9gl">Shao et al., 2016</a> and <a href="https://arxiv.org/abs/1506.05869">(Vinyals and Le, 2015)</a>.</li>
+          </ul>
           </div>
         </section>
         <section>
@@ -262,9 +294,9 @@
             <h2>Questionaire</h2>
             <ul>
             <li class="section-subheader">Rate 3 responses (baseline, ours, and human response)</li>
-            <li class="section-subheader">3 different criteria: (1) which is the most believable response; (2) which response is the most grammatically correct; (3) which response provides the most believable information</li>
+            <li class="section-subheader">3 different criteria: (1) appropriateness (is it a valid answer); (2) grammatical correctness; (3) diversity of the response (is it more than just "I don't know.") </li>
             <li class="section-subheader">Rate on scale: Excellent(5), Good(4), Acceptable(3), Mediocre(2), and Bad(1)</li>
-            <li class="section-subheader">Questions and statements taken mostly from: TODO Vinyals.</li>
+            <li class="section-subheader">Questions and statements taken mostly from: <a href="https://arxiv.org/abs/1506.05869">(Vinyals and Le, 2015)</a>. (50 total)</li>
             <li class="section-subheader">Idea from questionaire taken from <a href="https://openreview.net/pdf?id=HJDdiT9gl">Shao et al., 2016</a>.</li>
           </ul>
           </div>
@@ -287,7 +319,7 @@
         <section>
           <div class="text">
             <h2>Baseline: Word-Level Seq2Seq with Attention and Beam Search</h2>
-            <div class="section-subheader">Bleu Score on Validation Set: TODO</div>
+            <div class="section-subheader">Bleu Score on Validation Set: 1.23</div>
           </div>
         </section>
       </section>
@@ -299,7 +331,7 @@
             <h2>Results (BLEU Score)</h2>
             <ul>
               <li class="section-subheader">Word Level Seq2Seq with Attention: 1.30 </li>
-              <li class="section-subheader">Original Character-level ByteNet: 1.13</li>
+              <li class="section-subheader">Original Character-level ByteNet: .76</li>
               <li class="section-subheader">Modified Character-level ByteNet: TODO</li>
             </ul>
           </div>
@@ -308,8 +340,8 @@
           <div class="text">
             <h2>Results (Questionaire Scores)</h2>
             <ul>
-            <li class="section-subheader">Most believable response (average rating)</li>
-            <li class="section-subheader">Baseline Seq2Seq: </li>
+            <li class="section-subheader">Appropriateness of response (average rating)</li>
+            <li class="section-subheader">Baseline Seq2Seq: 2.16</li>
             <li class="section-subheader">Modified Character-level ByteNet: </li>
             <li class="section-subheader">Human: </li>
           </ul>
@@ -319,8 +351,8 @@
           <div class="text">
             <h2>Results (Questionaire Scores)</h2>
             <ul>
-            <li class="section-subheader">Most believable response (average rating)</li>
-            <li class="section-subheader">Baseline Seq2Seq: </li>
+            <li class="section-subheader">Grammaticality (average rating)</li>
+            <li class="section-subheader">Baseline Seq2Seq: 5</li>
             <li class="section-subheader">Modified Character-level ByteNet: </li>
             <li class="section-subheader">Human Average rank: </li>
             </ul>
@@ -330,8 +362,8 @@
           <div class="text">
             <h2>Results (Questionaire Scores)</h2>
             <ul>
-            <li class="section-subheader">Most informative response (average rating)</li>
-            <li class="section-subheader">Baseline Seq2Seq: </li>
+            <li class="section-subheader">Information Gain/Diversity (average rating)</li>
+            <li class="section-subheader">Baseline Seq2Seq: 1.45</li>
             <li class="section-subheader">Modified Character-level ByteNet: </li>
             <li class="section-subheader">Human Average rank: </li>
             </ul>
@@ -339,8 +371,38 @@
         </section>
         <section>
           <div class="text">
-            <h2>Results (Sample Responses)</h2>
-            <div class="section-subheader">TODO</div>
+            <h2>Results (Sample Responses Seq2Seq)</h2>
+            <ul>
+            <li class="section-subheader"><b>How are you?</b> Good.</li>
+            <li class="section-subheader"><b>Where are you from?</b> Home.</li>
+            <li class="section-subheader"><b>Can a cat fly?</b>How can you do that?</li>
+            <li class="section-subheader"><b>How many legs does a cat have?</b> I don't know.</li>
+            <li class="section-subheader"><b> What is the purpose of life?</b> I don't know.</li>
+          </ul>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Results (Modified ByteNet)</h2>
+            <ul>
+            <li class="section-subheader"><b>How are you?</b> I don't know.  I'm sorry.</li>
+            <li class="section-subheader"><b>Where are you from?</b> Nowhere....</li>
+            <li class="section-subheader"><b>Can a cat fly?</b>You got it!</li>
+            <li class="section-subheader"><b>How many legs does a cat have?</b> Five.</li>
+            <li class="section-subheader"><b> What is the purpose of life?</b>Nothing.  I'm sorry.</li>
+          </ul>
+          </div>
+        </section>
+        <section>
+          <div class="text">
+            <h2>Results (Sample Responses Human)</h2>
+            <ul>
+            <li class="section-subheader"><b>How are you?</b> Good. How about you?</li>
+            <li class="section-subheader"><b>Where are you from?</b> Kentucky.</li>
+            <li class="section-subheader"><b>Can a cat fly?</b>No, of course not.</li>
+            <li class="section-subheader"><b>How many legs does a cat have?</b> It has four legs.</li>
+            <li class="section-subheader"><b> What is the purpose of life?</b>To enjoy it.</li>
+          </ul>
           </div>
         </section>
       </section>
@@ -356,7 +418,7 @@
           <div class="text">
             <h2>Analysis and Discussion</h2>
             <div class="section-subheader">Low BLEU scores.</div>
-            <div class="section-subheader">Likely due to inneffectiveness of BLEU as a metric for dialogue systems.</div>
+            <div class="section-subheader">Partly due to inneffectiveness of BLEU as a metric for dialogue systems.</div>
             <div class="section-subheader">Small and noisy dataset.</div>
           </div>
         </section>
