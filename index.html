@@ -151,6 +151,17 @@
             <div class="section-subheader">Fully convolutional dialogue system based on causal convolutions not applied previously to authors knowledge.</div>
           </div>
         </section>
+        <section id="contributions">
+          <div class="text">
+            <h2>Why is this worth pursuing?</h2>
+            <ul>
+            <li class="section-subheader">Seek to improve on standard LSTM models by taking into account longer contexts.</li>
+            <li class="section-subheader">Allows for easy incorporation of global/local conditioning on extra variables.</li>
+            <li class="section-subheader">Highly parallelizable for fast generation (see <a href="https://arxiv.org/abs/1610.10099">ByteNet</a>).</li>
+            <li class="section-subheader">Character level allows for implicit modeling of words. No need for <i>UNK</i>.</li>
+            </ul>
+          </div>
+        </section>
       </section>
 
       <section>
@@ -178,19 +189,19 @@
         <section>
           <div class="text">
             <h2>ByteNet Architecture</h2>
-            <div class="section-subheader"><img src="$/images_pf/bytenet.png"/></div>
+            <div class="section-subheader"><img src="$/images_pf/bytenet.png"/><br/><span style="font-size: 16px;">Note: image taken from <a href="https://github.com/buriburisuri/ByteNet">ByteNet paper and modified.</a></span></div>
           </div>
         </section>
         <section>
           <div class="text">
             <h2>Modified ByteNet Architecture</h2>
-            <div class="section-subheader"><img src="$/images_pf/modified_bytenet.png"/></div>
+            <div class="section-subheader"><img src="$/images_pf/modified_bytenet.png"/><br/><span style="font-size: 16px;">Note: image create from combined <a href="https://github.com/buriburisuri/ByteNet">ByteNet</a> and <a href="https://github.com/buriburisuri/speech-to-text-wavenet">WaveNet papers.</a></span></div>
           </div>
         </section>
         <section>
           <div class="text">
-            <h2>Modified ByteNet Architecture</h2>
-            <div class="section-subheader">$z=\tanh(W*x + V*h) \odot \sigma (W*x + V*h)$</div>
+            <h2>Modified ByteNet Architecture<br/>Global Conditioning</h2>
+            <div class="section-subheader">$z=\tanh(W*x + V*h) \odot \sigma (W*x + V*h)$<br/><br/> Taken from WaveNet global conditioning model.</div>
           </div>
         </section>
         <section>
@@ -287,6 +298,7 @@
           </ul>
           </div>
         </section>
+        <!--
         <section>
           <div class="text">
             <h2>Experiment 1: Raw ByteNet Architecture w/ Beam Search</h2>
@@ -307,7 +319,7 @@
             <h2>Baseline: Word-Level Seq2Seq with Attention and Beam Search</h2>
             <div class="section-subheader">Bleu Score on Validation Set: 1.23</div>
           </div>
-        </section>
+        </section>-->
       </section>
 
 
@@ -318,7 +330,7 @@
             <ul>
               <li class="section-subheader">Word Level Seq2Seq with Attention: 1.30 </li>
               <li class="section-subheader">Original Character-level ByteNet: 1.46</li>
-              <li class="section-subheader">Modified Character-level ByteNet: TODO</li>
+              <li class="section-subheader">Modified Character-level ByteNet: 2.01</li>
             </ul>
           </div>
         </section>
@@ -329,7 +341,7 @@
             <li class="section-subheader">Appropriateness of response (average rating)</li>
             <li class="section-subheader">Baseline Seq2Seq: 2.16</li>
             <li class="section-subheader">Baseline ByteNet: 2.23</li>
-            <li class="section-subheader">Modified Character-level ByteNet: TODO</li>
+            <li class="section-subheader">Modified Character-level ByteNet: 1.89</li>
             <li class="section-subheader">Human: 4.68</li>
           </ul>
           </div>
@@ -341,7 +353,7 @@
             <li class="section-subheader">Grammaticality (average rating)</li>
             <li class="section-subheader">Baseline Seq2Seq: 5</li>
             <li class="section-subheader">Baseline ByteNet: 4.59</li>
-            <li class="section-subheader">Modified Character-level ByteNet: </li>
+            <li class="section-subheader">Modified Character-level ByteNet: 4.17</li>
             <li class="section-subheader">Human Average rank: 5</li>
             </ul>
           </div>
@@ -353,7 +365,7 @@
             <li class="section-subheader">Information Gain/Diversity (average rating)</li>
             <li class="section-subheader">Baseline Seq2Seq: 1.45</li>
             <li class="section-subheader">Baseline ByteNet: 1.72</li>
-            <li class="section-subheader">Modified Character-level ByteNet: TODO</li>
+            <li class="section-subheader">Modified Character-level ByteNet: 2.14</li>
             <li class="section-subheader">Human Average rank: 4.26</li>
             </ul>
           </div>
@@ -419,7 +431,7 @@
           <div class="text">
             <h2>Analysis and Discussion</h2>
             <div class="section-subheader">Low BLEU scores.</div>
-            <div class="section-subheader">Partly due to inneffectiveness of BLEU as a metric for dialogue systems.</div>
+            <div class="section-subheader">BLEU score not great. Maybe <a href="https://openreview.net/pdf?id=HJ5PIaseg">ADEM better</a> (but not yet published)?</div>
             <div class="section-subheader">Small and noisy dataset.</div>
           </div>
         </section>
@@ -438,13 +450,6 @@
         <section >
           <div class="text">
             <h2>Analysis and Discussion</h2>
-            <div class="section-subheader">Alternative Evaluation Metrics</div>
-            <div class="section-subheader">BLEU score not great. Maybe <a href="https://openreview.net/pdf?id=HJ5PIaseg">ADEM better</a> (but not yet published)?</div>
-          </div>
-        </section>
-        <section >
-          <div class="text">
-            <h2>Analysis and Discussion</h2>
             <div class="section-subheader"><b>Prohibitive Training Time</b></div>
             <ul>
             <li class="section-subheader">Extremely long (~2 days for model to converge on ~80k sentence pairs)</li>
@@ -453,26 +458,7 @@
             </ul>
           </div>
         </section>
-        <section >
-          <div class="text">
-            <h2>Modified ByteNet Strengths</h2>
-            <ul>
-            <li class="section-subheader">More diverse responses</li>
-            <li class="section-subheader">Can model character level phenomena like ellipses...</li>
-            <li class="section-subheader">Learns to model language.</li>
-          </ul>
-          </div>
-        </section>
-        <section >
-          <div class="text">
-            <h2>Modified ByteNet Weaknesses</h2>
-            <ul>
-            <li class="section-subheader">Still some noisy output</li>
-            <li class="section-subheader">Needs larger model for effective responses</li>
-            <li class="section-subheader">Data hungry model.</li>
-          </ul>
-          </div>
-        </section>
+
       </section>
 
       <section>
@@ -485,7 +471,27 @@
         <section>
           <div class="text">
             <h2>Conclusion</h2>
-            <div class="section-subheader">Modified character-level ByteNet architecture competitive with basic word-level Seq2Seq.</div>
+            <div class="section-subheader">Character-level ByteNet architecture competitive with basic word-level Seq2Seq.</div>
+          </div>
+        </section>
+        <section >
+          <div class="text">
+            <h2>ByteNet Strengths</h2>
+            <ul>
+            <li class="section-subheader">More diverse responses</li>
+            <li class="section-subheader">Can model character level phenomena like ellipses...</li>
+            <li class="section-subheader">Learns to model language.</li>
+          </ul>
+          </div>
+        </section>
+        <section >
+          <div class="text">
+            <h2>ByteNet Weaknesses</h2>
+            <ul>
+            <li class="section-subheader">Still some noisy output</li>
+            <li class="section-subheader">Needs larger model for effective responses</li>
+            <li class="section-subheader">Data hungry model.</li>
+          </ul>
           </div>
         </section>
         <section>
